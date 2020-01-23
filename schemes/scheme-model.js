@@ -33,13 +33,15 @@ function findSteps(id) {
 
 function add(scheme) {
     return db('schemes')
-    .insert(scheme)
-    .then(newScheme => findById(newScheme[0].id));
+    .insert(scheme);
+    
 }
 
 function update(changes, id) {
-    return db('schemes').where({id: id}).update(changes)
-    .then(updated => findById(updated[0].id));
+    return db('schemes')
+    .where({id})
+    .update(changes)
+    
 }
 
 function remove(id) {
